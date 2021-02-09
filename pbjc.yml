@@ -1,0 +1,28 @@
+domain: https://schemas.thereal.com
+
+namespaces:
+  - thereal:apollo
+  - thereal:boost
+  - thereal:canvas
+  - thereal:curator
+  - thereal:dam
+  - thereal:iam
+  - thereal:news
+  - thereal:notify
+  - thereal:ovp
+  - thereal:people
+  - thereal:sys
+  - thereal:taxonomy
+
+languages:
+  php:
+    output: ./build/php/src
+
+  js:
+    output: ./build/js/src
+    packages:
+      thereal: '@therealtv/schemas'
+
+  json-schema:
+    include_all: true
+    output: ./gh-pages/json-schema
