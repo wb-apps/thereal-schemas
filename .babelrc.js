@@ -10,7 +10,7 @@ const plugins = [
         './build/js/src',
       ],
       alias: {
-        '@thereal/schemas': './build/js/src',
+        '@therealtv/schemas': './build/js/src',
       },
     },
   ],
