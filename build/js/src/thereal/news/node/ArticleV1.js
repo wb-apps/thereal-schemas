@@ -1,5 +1,4 @@
 // @link https://schemas.thereal.com/json-schema/thereal/news/node/article/1-0-0.json#
-import Fb from '@gdbots/pbj/FieldBuilder';
 import GdbotsCommonLabelableV1Mixin from '@gdbots/schemas/gdbots/common/mixin/labelable/LabelableV1Mixin';
 import GdbotsCommonTaggableV1Mixin from '@gdbots/schemas/gdbots/common/mixin/taggable/TaggableV1Mixin';
 import GdbotsNcrExpirableV1Mixin from '@gdbots/schemas/gdbots/ncr/mixin/expirable/ExpirableV1Mixin';
@@ -12,7 +11,6 @@ import GdbotsNcrSluggableV1Mixin from '@gdbots/schemas/gdbots/ncr/mixin/sluggabl
 import Message from '@gdbots/pbj/Message';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
 import Schema from '@gdbots/pbj/Schema';
-import T from '@gdbots/pbj/types';
 import TrinitiBoostSponsorableV1Mixin from '@triniti/schemas/triniti/boost/mixin/sponsorable/SponsorableV1Mixin';
 import TrinitiCanvasHasBlocksV1Mixin from '@triniti/schemas/triniti/canvas/mixin/has-blocks/HasBlocksV1Mixin';
 import TrinitiCommonAdvertisingV1Mixin from '@triniti/schemas/triniti/common/mixin/advertising/AdvertisingV1Mixin';
@@ -37,10 +35,7 @@ export default class ArticleV1 extends Message {
    */
   static defineSchema() {
     return new Schema('pbj:thereal:news:node:article:1-0-0', ArticleV1,
-      [
-        Fb.create('geo_point', T.GeoPointType.create())
-          .build(),
-      ],
+      [],
       [
         GdbotsNcrNodeV1Mixin.create(),
         TrinitiNewsArticleV1Mixin.create(),

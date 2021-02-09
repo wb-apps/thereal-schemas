@@ -4,7 +4,7 @@ import RequiredFieldNotSet from '@gdbots/pbj/exceptions/RequiredFieldNotSet';
 import Message from '@gdbots/pbj/Message';
 import MessageRef from '@gdbots/pbj/MessageRef';
 import MessageResolver from '@gdbots/pbj/MessageResolver';
-import '@wbthereal/schemas';
+import '@thereal/schemas';
 
 test('Can create all messages', (t) => {
   MessageResolver.all().forEach((classProto) => {

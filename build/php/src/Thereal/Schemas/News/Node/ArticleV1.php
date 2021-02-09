@@ -3,9 +3,7 @@
 namespace Thereal\Schemas\News\Node;
 
 use Gdbots\Pbj\AbstractMessage;
-use Gdbots\Pbj\FieldBuilder as Fb;
 use Gdbots\Pbj\Schema;
-use Gdbots\Pbj\Type as T;
 use Gdbots\Schemas\Common\Mixin\Labelable\LabelableV1 as GdbotsCommonLabelableV1;
 use Gdbots\Schemas\Common\Mixin\Labelable\LabelableV1Mixin as GdbotsCommonLabelableV1Mixin;
 use Gdbots\Schemas\Common\Mixin\Taggable\TaggableV1 as GdbotsCommonTaggableV1;
@@ -87,10 +85,7 @@ final class ArticleV1 extends AbstractMessage implements
     protected static function defineSchema()
     {
         return new Schema('pbj:thereal:news:node:article:1-0-0', __CLASS__,
-            [
-                Fb::create('geo_point', T\GeoPointType::create())
-                    ->build(),
-            ],
+            [],
             [
                 GdbotsNcrNodeV1Mixin::create(),
                 TrinitiNewsArticleV1Mixin::create(),

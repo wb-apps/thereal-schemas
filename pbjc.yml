@@ -20,8 +20,6 @@ languages:
 
   js:
     output: ./build/js/src
-    packages:
-      thereal: '@wbthereal/schemas'
 
   json-schema:
     include_all: true
