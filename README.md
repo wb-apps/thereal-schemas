@@ -1,6 +1,6 @@
-Thereal Schemas
+TMZ Schemas
 ========
 
-[![Build Status](https://api.travis-ci.org/wb-apps/thereal-schemas.svg)](https://travis-ci.org/wb-apps/thereal-schemas)
+[![Build Status](https://api.travis-ci.org/wb-apps/tmz-schemas.svg)](https://travis-ci.org/wb-apps/tmz-schemas)
 
-Schemas for all The Real apps and components. [Browse the json schemas.](https://schemas.thereal.com/)
+Schemas for all TMZ apps and components.  [Browse the json schemas.](https://schemas.tmz.com/)
