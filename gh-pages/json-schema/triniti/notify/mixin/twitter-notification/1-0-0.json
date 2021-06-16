@@ -1,5 +1,5 @@
 {
-  "id": "https://schemas.thereal.com/json-schema/triniti/news/mixin/article/1-0-4.json#",
+  "id": "https://schemas.thereal.com/json-schema/triniti/notify/mixin/twitter-notification/1-0-0.json#",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -163,198 +163,98 @@
         "rule": "single"
       }
     },
-    "is_homepage_news": {
-      "type": "boolean",
-      "default": true,
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "slotting": {
-      "type": "object",
-      "patternProperties": {
-        "^[a-zA-Z_]{1}[\\w\\.:-]+$": {
-          "type": "integer",
-          "default": 0,
-          "minimum": 0,
-          "maximum": 255
-        }
-      },
-      "additionalProperties": false,
-      "description": "A map of integers, e.g. {home: 1, sports: 5, tv: 9}, that determine where articles will render in lists that use slotting. We call it slotting vs sticky or pinning as that is generally just one at a time.",
-      "pbj": {
-        "type": "tiny-int",
-        "rule": "map"
-      }
-    },
-    "allow_comments": {
-      "type": "boolean",
-      "default": true,
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "author_ref": {
+    "app_ref": {
       "type": "string",
       "pattern": "^[\\w\\/\\.:-]+$",
-      "description": "A reference to the author of the article.",
+      "description": "A reference to the app this notification is being sent to.",
       "pbj": {
         "type": "identifier",
         "rule": "single"
       }
     },
-    "image_ref": {
+    "content_ref": {
       "type": "string",
       "pattern": "^[\\w\\/\\.:-]+$",
-      "description": "A reference to the image asset to use for widgets, sharing, seo.",
+      "description": "A reference to the content this notification will include.",
       "pbj": {
         "type": "identifier",
         "rule": "single"
       }
     },
-    "classification": {
+    "send_status": {
       "type": "string",
-      "pattern": "^([\\w\\/-]|[\\w-][\\w\\/-]*[\\w-])$",
+      "default": "draft",
+      "enum": [
+        "unknown",
+        "draft",
+        "scheduled",
+        "sent",
+        "canceled",
+        "failed"
+      ],
+      "pbj": {
+        "type": "string-enum",
+        "rule": "single"
+      }
+    },
+    "send_on_publish": {
+      "type": "boolean",
+      "pbj": {
+        "type": "boolean",
+        "rule": "single"
+      }
+    },
+    "send_at": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "pbj": {
+        "type": "date-time",
+        "rule": "single"
+      }
+    },
+    "body": {
+      "type": "string",
       "minLength": 0,
-      "maxLength": 255,
-      "description": "An arbitrary classification that can be used to establish importance/rank/weight/etc. with a human friendly label. e.g. \"super-hero\", \"hero\", \"chud\".",
-      "pbj": {
-        "type": "string",
-        "rule": "single",
-        "format": "slug"
-      }
-    },
-    "word_count": {
-      "type": "integer",
-      "default": 0,
-      "minimum": 0,
-      "maximum": 65535,
-      "pbj": {
-        "type": "small-int",
-        "rule": "single"
-      }
-    },
-    "amp_enabled": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if AMP (Accelerated Mobile Pages) should be enabled for this article.",
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "smartnews_enabled": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if SmartNews should be enabled for this article.",
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "apple_news_enabled": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if Apple News should be enabled for this article.",
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "apple_news_id": {
-      "type": "string",
-      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
-      "description": "The unique identifier of the Apple News article.",
-      "pbj": {
-        "type": "uuid",
-        "rule": "single",
-        "useTypeDefault": false
-      }
-    },
-    "apple_news_revision": {
-      "type": "string",
-      "pattern": "^[\\w\\/\\.\\\\\\:=+-]+$",
-      "description": "The current revision token for the Apple News article. e.g. AAAAAAAAAAAAAAAAAAAAAQ==",
-      "pbj": {
-        "type": "string",
-        "rule": "single"
-      }
-    },
-    "apple_news_share_url": {
-      "type": "string",
-      "pattern": "^(https?:\\/\\/)?([\\da-z\\.-]+)\\.([a-z\\.]{2,6})([\\/\\w \\.-]*)*\\/?$",
+      "maxLength": 2000,
+      "description": "The body of the notification to use (format depends on app/platform). If present this value should take precedence over the body derived from content_ref.",
       "pbj": {
         "type": "text",
-        "rule": "single",
-        "format": "url"
-      }
-    },
-    "apple_news_updated_at": {
-      "type": "integer",
-      "minimum": -2147483648,
-      "maximum": 2147483647,
-      "description": "Timestamp when Apple News was last updated at.",
-      "pbj": {
-        "type": "timestamp",
-        "rule": "single",
-        "useTypeDefault": false
-      }
-    },
-    "facebook_instant_articles_enabled": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if Facebook Instant Articles should be enabled for this article.",
-      "pbj": {
-        "type": "boolean",
         "rule": "single"
       }
     },
-    "twitter_publish_enabled": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if a twitter notification should be automatically created when this article is published.",
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "show_related_articles": {
-      "type": "boolean",
-      "default": true,
-      "description": "Determines if the related articles should render. This is intended as a flag on blogroll/lists, not the permalink of an article where you'd always expect to see the related articles.",
-      "pbj": {
-        "type": "boolean",
-        "rule": "single"
-      }
-    },
-    "related_articles_heading": {
-      "type": "string",
-      "minLength": 0,
-      "maxLength": 255,
-      "pbj": {
-        "type": "string",
-        "rule": "single"
-      }
-    },
-    "related_article_refs": {
-      "type": "array",
-      "items": [
+    "notifier_result": {
+      "type": "object",
+      "anyOf": [
         {
-          "type": "string",
-          "pattern": "^[\\w\\/\\.:-]+$"
+          "$ref": "#/definitions/notifier-result"
         }
       ],
-      "additionalProperties": false,
       "pbj": {
-        "type": "identifier",
-        "rule": "list"
+        "type": "message",
+        "rule": "single"
       }
     }
   },
   "required": [
     "_id"
   ],
+  "definitions": {
+    "notifier-result": {
+      "type": "object",
+      "anyOf": [
+        {
+          "$ref": "https://schemas.thereal.com/json-schema/triniti/notify/notifier-result/1-0-0.json#"
+        }
+      ]
+    }
+  },
   "additionalProperties": true
 }
