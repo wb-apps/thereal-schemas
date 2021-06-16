@@ -15,4 +15,5 @@ export default [
   'thereal:iam:node:ios-app:v1',
   'thereal:iam:node:slack-app:v1',
   'thereal:iam:node:sms-app:v1',
+  'thereal:iam:node:twitter-app:v1',
 ];

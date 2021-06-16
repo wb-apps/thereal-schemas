@@ -15,4 +15,5 @@ export default [
   'thereal:notify:node:ios-notification:v1',
   'thereal:notify:node:slack-notification:v1',
   'thereal:notify:node:sms-notification:v1',
+  'thereal:notify:node:twitter-notification:v1',
 ];
